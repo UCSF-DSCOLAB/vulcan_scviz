@@ -9,13 +9,13 @@ rule get_dataset_and_summarize:
     params:
         dataset_name=config["dataset_name"]
     output:
-        scdata="scdata.Rds",
-        plotting_options="plotting_options.json",
-        discrete_metadata_summary="discrete_metadata_summary.json",
-        all_opts="all_opts.json",
-        continuous_opts="continuous_opts.json",
-        discrete_opts="discrete_opts.json",
-        reduction_opts="reduction_opts.json"
+        scdata="output/scdata.Rds",
+        plotting_options="output/plotting_options.json",
+        discrete_metadata_summary="output/discrete_metadata_summary.json",
+        all_opts="output/all_opts.json",
+        continuous_opts="output/continuous_opts.json",
+        discrete_opts="output/discrete_opts.json",
+        reduction_opts="output/reduction_opts.json"
     singularity:
         "/app/archimedes-r.sif"
     script:
@@ -24,15 +24,15 @@ rule get_dataset_and_summarize:
 # For UI elements that produce outputs used in a snakemake step, we just specify the input/output, so snakemake can infer the dag
 rule plot_setup_ui:
     input:
-        plotting_options="plotting_options.json"
+        plotting_options="output/plotting_options.json"
     output:
-        plot_settings="plot_setup.json"
+        plot_settings="output/plot_setup.json"
 
 rule make_plot:
     input:
-        scdata="scdata.Rds",
-        plot_setup="plot_setup.json",
-        plotting_options="plotting_options.json"
+        scdata="output/scdata.Rds",
+        plot_setup="output/plot_setup.json",
+        plotting_options="output/plotting_options.json"
     output:
         plot_out="output/plot.out",
         thumbnail="output/thumbnail.png",
