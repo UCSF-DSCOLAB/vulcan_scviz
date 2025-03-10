@@ -16,6 +16,8 @@ rule get_dataset_and_summarize:
         continuous_opts="continuous_opts.json",
         discrete_opts="discrete_opts.json",
         reduction_opts="reduction_opts.json"
+    singularity:
+        "/app/archimedes-r.sif"
     script:
         "scripts/get_dataset_and_summarize.R"
 
@@ -35,6 +37,8 @@ rule make_plot:
         plot_out="output/plot.out",
         thumbnail="output/thumbnail.png",
         plot_Rds="output/plot.Rds"
+    singularity:
+        "/app/archimedes-r.sif"
     script:
         "scripts/make_dittoSeq_plot.R"
 

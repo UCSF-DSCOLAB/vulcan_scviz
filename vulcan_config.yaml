@@ -17,7 +17,7 @@
     files: [ plot_setup.json ]
 - display: 'Download plot as R object (.Rds)'
   ui_component: "link"
-  input: [ "outputs/plot.Rds" ]
+  input: [ "plot.Rds" ]
 - display: "Display Plot"
   ui_component: "plot"
-  input: [ "make_plot/plot.out" ]
+  input: [ "plot.out" ]
