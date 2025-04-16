@@ -17,7 +17,7 @@ rule get_dataset_and_summarize:
         discrete_opts="output/discrete_opts.json",
         reduction_opts="output/reduction_opts.json"
     singularity:
-        "/app/archimedes-r.sif"
+        "/dscolab/vulcan/containers/archimedes-r.sif"
     script:
         "scripts/get_dataset_and_summarize.R"
 
@@ -38,7 +38,7 @@ rule make_plot:
         thumbnail="output/thumbnail.png",
         plot_Rds="output/plot.Rds"
     singularity:
-        "/app/archimedes-r.sif"
+        "/dscolab/vulcan/containers/archimedes-r.sif"
     script:
         "scripts/make_dittoSeq_plot.R"
 
