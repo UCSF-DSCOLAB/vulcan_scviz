@@ -149,6 +149,8 @@ dataset_record_raw <- retrieve(
     recordNames = input_str('dataset_name'),
     attributeNames = "all"
 )
+print("Logging magma retrieve return")
+print(dataset_record_raw)
 dataset_record <- as.vector(dataset_record_raw)
 names(dataset_record) <- colnames(dataset_record_raw)
 
