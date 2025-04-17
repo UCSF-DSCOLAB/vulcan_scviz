@@ -1,6 +1,12 @@
 - display: "name of single-cell dataset record"
-  ui_component: "string"
+  ui_component: "magma-record"
   doc: "Provide the identifier ('name' attribute) of the sc_seq_dataset record you wish to explore here. Note that we definitely plan to improve this particular selection method in the future!"
+  input:
+    preset:
+      modelName: 'sc_seq_dataset'
+      targetAtt: 'name'
+      otherAttsShow: ['group_id', 'description']
+      hasAtts: ['seurat_object']
   output:
     params: [ "dataset_name" ]
 - display: "Set plot options"
@@ -17,7 +23,9 @@
     files: [ plot_setup.json ]
 - display: 'Download plot as R object (.Rds)'
   ui_component: "link"
-  input: [ "plot.Rds" ]
+  input:
+    files: [ "plot.Rds" ]
 - display: "Display Plot"
   ui_component: "plot"
-  input: [ "plot.out" ]
+  input:
+    files: [ "plot.out" ]
