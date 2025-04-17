@@ -126,9 +126,6 @@ toNestedOptionsSet <- function(named_list) {
     named_list
 }
 
-print(past0("Using magma: ", magma_host()))
-print(past0("Using token: ", token()))
-
 magma_opts <- list(
     followlocation = FALSE)
 crul_opts <- list()
