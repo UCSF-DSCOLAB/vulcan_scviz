@@ -25,6 +25,8 @@ rule get_dataset_and_summarize:
 rule plot_setup_ui:
     input:
         plotting_options="output/plotting_options.json"
+    params:
+        ui=True
     output:
         plot_settings="output/plot_setup.json"
 
