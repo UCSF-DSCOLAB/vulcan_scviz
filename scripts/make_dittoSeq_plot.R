@@ -159,12 +159,10 @@ if ("reduction.setup" %in% names(plot_setup)) {
 }
 
 ### Parse subsetting
-if ( !is.null(plot_setup$cells.use) && length(plot_setup$cells.use)>0 ) {
+if ( !is.null(plot_setup$cells.use) && !identical(plot_setup$cells.use, FALSE) ) {
     # Special-case recommendation replacement
-    for (i in seq_along(plot_setup$cells.use$methods)) {
-        method <- plot_setup$cells.use$methods[[i]]
-        method[1] <- replace_meta_rec(method[1])
-        plot_setup$cells.use$methods[[i]] <- method
+    for (i in seq_along(plot_setup$cells.use)) {
+        plot_setup$cells.use[[i]]$col <- replace_meta_rec(plot_setup$cells.use[[i]]$col)
     }
     # Parse
     plot_setup$cells.use <- subset__scObj(scdata, plot_setup$cells.use)
@@ -228,6 +226,3 @@ if (identical(plot_setup$do.hover, TRUE)) {
     # Remove the Seurat 'object' from the plot's internals to keep it smaller
     fig$plot_env$object <- NULL
 }
-
-# Output the plot as file for editing
-saveRDS(fig, file = output_path('plot_Rds'))

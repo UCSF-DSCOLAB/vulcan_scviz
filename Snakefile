@@ -37,8 +37,7 @@ rule make_plot:
         plotting_options="output/plotting_options.json"
     output:
         plot_out="output/plot.out",
-        thumbnail="output/thumbnail.png",
-        plot_Rds="output/plot.Rds"
+        thumbnail="output/thumbnail.png"
     singularity:
         "/dscolab/vulcan/containers/archimedes-r.sif"
     script:

@@ -22,10 +22,6 @@
       reduction_opts: "reduction_opts.json"
   output:
     files: [ plot_setup.json ]
-- display: 'Download plot as R object (.Rds)'
-  ui_component: "link"
-  input:
-    files: [ "plot.Rds" ]
 - display: "Display Plot"
   ui_component: "plot"
   input:
