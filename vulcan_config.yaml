@@ -1,4 +1,4 @@
-- display: "name of single-cell dataset record"
+- display: "Dataset__name of single-cell dataset record"
   ui_component: "magma-record"
   doc: "Provide the identifier ('name' attribute) of the sc_seq_dataset record you wish to explore here. Note that we definitely plan to improve this particular selection method in the future!"
   input:
