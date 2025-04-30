@@ -2,8 +2,7 @@ configfile: "config.yaml"
 
 rule all:
     input:
-        thumbnail="output/thumbnail.png",
-        plot="output/plot.out"
+        thumbnail="output/thumbnail.png"
 
 rule get_dataset_and_summarize:
     params:
