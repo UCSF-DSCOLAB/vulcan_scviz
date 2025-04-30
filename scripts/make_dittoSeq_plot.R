@@ -191,7 +191,9 @@ if (identical(plot_setup$do.hover, TRUE)) {
     }
     fig <- do.call(viz_fxn, plot_setup)
     fig_json <- plotly::plotly_json(fig, jsonedit = FALSE, pretty = FALSE)
-    output_var(fig_json, 'plot_out')
+    # Output as plot_json
+    output_var(fig_json, 'plot_json')
+    system(paste0('touch "', output_path('plot_png'), '"'))
     # Thumbnail
     plot_setup$do.hover <- FALSE
     ggsave(
@@ -204,17 +206,9 @@ if (identical(plot_setup$do.hover, TRUE)) {
     )
 } else {
     fig <- do.call(viz_fxn, plot_setup)
+    # Output as plot_png
     ggsave(
-        filename = output_path('thumbnail'),
-        plot = fig + 
-            theme_void() + theme(legend.position = "none") + ggtitle(NULL, NULL),
-        units = "px",
-        dpi = 50,
-        width = 300,
-        height = 200
-    )
-    ggsave(
-        filename = output_path('plot_out'),
+        filename = output_path('plot_png'),
         # plot = dittoSeq:::.remove_legend(fig),
         plot = fig,
         device = "png",
@@ -223,6 +217,15 @@ if (identical(plot_setup$do.hover, TRUE)) {
         width = 1500,
         height = 1200
     )
-    # Remove the Seurat 'object' from the plot's internals to keep it smaller
-    fig$plot_env$object <- NULL
+    system(paste0('touch "', output_path('plot_json'), '"'))
+    # Thumbnail
+    ggsave(
+        filename = output_path('thumbnail'),
+        plot = fig +
+            theme_void() + theme(legend.position = "none") + ggtitle(NULL, NULL),
+        units = "px",
+        dpi = 50,
+        width = 300,
+        height = 200
+    )
 }

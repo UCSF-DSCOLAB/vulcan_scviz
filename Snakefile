@@ -36,7 +36,8 @@ rule make_plot:
         plot_setup="output/plot_setup.json",
         plotting_options="output/plotting_options.json"
     output:
-        plot_out="output/plot.out",
+        plot_png="output/plot.png",
+        plot_json="output/plot.json",
         thumbnail="output/thumbnail.png"
     singularity:
         "/dscolab/vulcan/containers/archimedes-r.sif"

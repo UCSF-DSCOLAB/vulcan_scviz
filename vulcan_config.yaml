@@ -25,4 +25,4 @@
 - display: "Display Plot"
   ui_component: "plot"
   input:
-    files: [ "plot.out" ]
+    files: [ "plot.png", "plot.json" ]
